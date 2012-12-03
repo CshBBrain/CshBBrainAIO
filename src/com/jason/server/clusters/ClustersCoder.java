@@ -109,7 +109,7 @@ public class ClustersCoder extends CoderHandler {
 	 */
 	public void broundMsg(Client sockector, Response msg) throws IOException{		
 		byte[] msgs = CoderUtils.toByte(msg.getBody());
-		ClustersMessage messageFrame = sockector.getRequestWithFile().<ClustersMessage>getMessageHeader();
+		ClustersMessage messageFrame = sockector.getRequestWithFile().<ClustersMessage>getMessageHeader(msg.getRequestIndex());
 		
 		if(messageFrame == null){
 			messageFrame = new ClustersMessage();
@@ -142,7 +142,7 @@ public class ClustersCoder extends CoderHandler {
 		
 		msg.appendBytes(msgs);
 		
-		sockector.getRequestWithFile().clear();// 清理每次连接交互的数据
+		sockector.getRequestWithFile().clearMessageHeader(msg.getRequestIndex());// 清理每次连接交互的数据
     }
 	
 	public void handShak(Client sockector) {

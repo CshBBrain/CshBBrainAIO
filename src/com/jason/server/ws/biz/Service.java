@@ -59,7 +59,7 @@ public class Service{
 			if(!MyStringUtil.isBlank(requestData.get(Constants.HANDSHAKE))){
 				responseMessage = Response.msgOnlyBody(requestData.get(Constants.FILED_MSG));
 			}else{
-				responseMessage = Response.msgOnlyBody("Hello," + requestData.get(Constants.FILED_MSG));				
+				responseMessage = Response.msgOnlyBody("var taskKey= " + requestData.get("taskKey")  + "; var resultData= '<-" + requestData.get("taskKey") +"->'");				
 			}
 		}catch(Exception e){
 			e.printStackTrace();

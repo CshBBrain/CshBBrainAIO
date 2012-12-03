@@ -49,7 +49,16 @@ public class Response{
 	private Client client;// 客户端
 	private Response parent = null;// 是否有父亲
 	private AtomicInteger subResponse = new AtomicInteger(0);// 是否将内容放入缓存，默认为没有
+	private String requestIndex;// 请求索引
 	
+	public String getRequestIndex() {
+		return requestIndex;
+	}
+
+	public void setRequestIndex(String requestIndex) {
+		this.requestIndex = requestIndex;
+	}
+
 	public Response getParent() {
 		return parent;
 	}
